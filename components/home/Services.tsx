@@ -1,4 +1,3 @@
-// components/Services.tsx
 import React from 'react';
 
 const services = [
@@ -20,6 +19,7 @@ export default function Services() {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

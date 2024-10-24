@@ -12,7 +12,7 @@ interface ArrowProps {
 function NextArrow({ onClick }: ArrowProps) {
   return (
     <div
-      className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10 cursor-pointer bg-blue-600 p-2 rounded-full hover:bg-blue-700 transition-all"
+      className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10 cursor-pointer bg-gradient-to-r from-blue-800 to-blue-600 p-2 rounded-full hover:bg-blue-700 hover:scale-105 transition-all"
       onClick={onClick}
     >
       <IoIosArrowForward className="text-white text-3xl" />
@@ -23,12 +23,19 @@ function NextArrow({ onClick }: ArrowProps) {
 function PrevArrow({ onClick }: ArrowProps) {
   return (
     <div
-      className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10 cursor-pointer bg-blue-600 p-2 rounded-full hover:bg-blue-700 transition-all"
+      className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10 cursor-pointer bg-gradient-to-r from-blue-800 to-blue-600 p-2 rounded-full hover:bg-blue-700 hover:scale-105 transition-all"
       onClick={onClick}
     >
       <IoIosArrowBack className="text-white text-3xl" />
     </div>
   );
+}
+
+function ActionLink() {
+  function handleClick(e: { preventDefault: () => void }) {
+    e.preventDefault();
+    console.log('The link was clicked.');
+  }
 }
 
 export default function Hero() {
@@ -71,19 +78,23 @@ export default function Hero() {
     <div className="relative">
       <Slider {...settings}>
         {slides.map((slide, index) => (
-          <div key={index} className="relative h-[80vh] bg-cover bg-center" style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-            <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div key={index} className="relative h-[80vh] bg-cover">
             <motion.div
-              className="container mx-auto text-center text-white flex flex-col justify-center items-center h-full z-10"
+              className="text-center text-white flex flex-col justify-center items-center h-[80vh] z-10" style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: '25' }}
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <h1 className="text-4xl font-bold">{slide.title}</h1>
-              <p className="mt-4 text-lg max-w-lg">{slide.description}</p>
+              <div className="absolute inset-0 bg-black opacity-50"></div>
+
+              <h1 className="text-4xl font-bold drop-shadow-md">{slide.title}</h1>
+              <p className="mt-4 text-lg max-w-lg drop-shadow-md">{slide.description}</p> 
+
               <motion.button
-                className="mt-8 bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-700"
-                whileHover={{ scale: 1.1 }}
+                
+                onClick={ActionLink}
+                className="mt-8 bg-gradient-to-r from-blue-800 to-blue-600 px-6 py-3 rounded-lg hover:bg-blue-700 shadow-md z-50"
+                whileHover={{ scale: 1.02 }}
               >
                 Hubungi Kami
               </motion.button>
@@ -94,3 +105,5 @@ export default function Hero() {
     </div>
   );
 }
+
+

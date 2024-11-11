@@ -1,5 +1,4 @@
 // app/blog/[id]/page.tsx
-import { useRouter } from 'next/router';
 import CommentForm from '@/components/CommentForm';
 
 const blogPosts = [

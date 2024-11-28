@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import PageWrapper from '@/components/PageWrapper';
 
 export const metadata: Metadata = {
-  title: 'Pamakarya - Welder & Construction',
+  title: 'Pamakarya - Welding & Construction',
   description: 'Website resmi Pamakarya, penyedia jasa renovasi gedung dan desain interior terbaik di Indonesia.',
   icons: {
     icon: '/favicon.ico',
